@@ -186,6 +186,114 @@
   </div>
 </section>
 
+<!-- Tabs for Experiment Results -->
+<div class="section">
+  <h2 class="title is-4 has-text-centered">Some Key Results</h2>
+
+  <!-- Tab headers -->
+  <div class="tabs is-centered is-boxed">
+    <ul id="experiment-tabs">
+      <li class="is-active" data-tab="exp1"><a>Dilution</a></li>
+      <li data-tab="exp2"><a>Timing</a></li>
+      <li data-tab="exp3"><a>Paraphrasing</a></li>
+      <li data-tab="exp4"><a>Membership Inference Attacks</a></li>
+      <li data-tab="exp5"><a>Unlearning</a></li>
+    </ul>
+  </div>
+
+  <!-- Tab contents -->
+  <div id="experiment-contents" class="has-text-centered">
+
+    <!-- Experiment 1 -->
+    <div class="tab-content is-hidden" id="exp1" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images/Slide_GIFs/slide_9.gif"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+      <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images/Slide_GIFs/slide_10.gif"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+    </div>
+
+    <!-- Experiment 2 -->
+    <div class="tab-content is-hidden" id="exp2">
+      <figure class="has-text-centered">
+        <img
+          src="static/images/Slide_GIFs/slide_11.gif"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+    </div>
+
+    <!-- Experiment 3 -->
+    <div class="tab-content is-hidden" id="exp3" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+      <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images/Slide_GIFs/slide_12.gif"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+      <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images/Slide_GIFs/slide_13.gif"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+    </div>
+
+
+
+    <!-- Experiment 4 -->
+    <div class="tab-content is-hidden" id="exp4">
+      <figure class="has-text-centered">
+        <img
+          src="static/images/Slide_GIFs/slide_16.gif"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+    </div>
+
+    <!-- Experiment 5 -->
+    <div class="tab-content is-hidden" id="exp5">
+      <figure class="has-text-centered">
+        <img
+          src="static/images/Slide_GIFs/slide_17.gif"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Simple tab toggle behavior
+  document.querySelectorAll('#experiment-tabs li').forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Update active tab
+      document.querySelectorAll('#experiment-tabs li').forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      // Show corresponding content
+      const target = tab.dataset.tab;
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('is-hidden'));
+      document.getElementById(target).classList.remove('is-hidden');
+    });
+  });
+</script>
+
 
 <section class="section">
   <div class="container is-max-desktop">
