@@ -28,8 +28,7 @@ body {
 }
 
 
-.publication-title {
-}
+/* Removed empty .publication-title ruleset */
 
 .publication-banner {
   max-height: parent;
@@ -44,8 +43,7 @@ body {
   object-fit: fit;
 }
 
-.publication-header .hero-body {
-}
+/* Removed empty .publication-header .hero-body ruleset */
 
 .publication-title {
     font-family: 'Google Sans', sans-serif;
@@ -67,8 +65,7 @@ body {
     font-weight: bolder;
 }
 
-.publication-authors {
-}
+/* Removed empty .publication-authors ruleset (duplicate exists with styles) */
 
 .publication-authors a {
    color: hsl(204, 86%, 53%) !important;
@@ -82,12 +79,9 @@ body {
   display: inline-block;
 }
 
-.publication-banner img {
-}
+/* Removed empty .publication-banner img ruleset */
 
-.publication-authors {
-  /*color: #4286f4;*/
-}
+/* Removed comment-only .publication-authors ruleset */
 
 .publication-video {
     position: relative;
@@ -107,8 +101,7 @@ body {
     height: 100%;
 }
 
-.publication-body img {
-}
+/* Removed empty .publication-body img ruleset */
 
 .results-carousel {
   overflow: hidden;
@@ -138,8 +131,7 @@ body {
   border-radius: 5px;
 }
 
-.interpolation-video-column {
-}
+/* Removed empty .interpolation-video-column ruleset */
 
 .interpolation-panel .slider {
   margin: 0 !important;
@@ -154,4 +146,52 @@ body {
 }
 #interpolation-image-wrapper img {
   border-radius: 5px;
+}
+
+/* --- Uniform figure heights across experiment tabs --- */
+:root {
+  /* Adjust these breakpoints/heights as needed */
+  --tab-figure-height: 460px;
+}
+
+@media (max-width: 1024px) {
+  :root { --tab-figure-height: 380px; }
+}
+
+@media (max-width: 768px) {
+  :root { --tab-figure-height: 300px; }
+}
+
+/* Ensure all tab contents layout consistently */
+#experiment-contents .tab-content {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Keep hidden tabs hidden even if we set display:flex above */
+#experiment-contents .tab-content.is-hidden {
+  display: none !important;
+}
+
+/* Make all figures the same height and center their content */
+#experiment-contents .tab-content figure {
+  flex: 1 1 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--tab-figure-height);
+  text-align: center;
+  margin: 0;
+}
+
+/* Contain images within the fixed-height figure without distortion */
+#experiment-contents .tab-content figure img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
 }
