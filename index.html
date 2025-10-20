@@ -279,19 +279,36 @@
 </div>
 
 <script>
-  // Simple tab toggle behavior
-  document.querySelectorAll('#experiment-tabs li').forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Update active tab
-      document.querySelectorAll('#experiment-tabs li').forEach(t => t.classList.remove('is-active'));
-      tab.classList.add('is-active');
+  // Simple tab toggle behavior with initial activation
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('#experiment-tabs li');
 
-      // Show corresponding content
-      const target = tab.dataset.tab;
-      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('is-hidden'));
-      document.getElementById(target).classList.remove('is-hidden');
+    // Click handlers
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Update active tab
+        document.querySelectorAll('#experiment-tabs li').forEach(t => t.classList.remove('is-active'));
+        tab.classList.add('is-active');
+
+        // Show corresponding content
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.add('is-hidden'));
+        const content = document.getElementById(target);
+        if (content) content.classList.remove('is-hidden');
+      });
     });
+
+    // Initial show: reveal the content of the tab marked as active (or the first tab)
+    const active = document.querySelector('#experiment-tabs li.is-active') || tabs[0];
+    if (active) {
+      active.classList.add('is-active');
+      const target = active.dataset.tab;
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('is-hidden'));
+      const content = document.getElementById(target);
+      if (content) content.classList.remove('is-hidden');
+    }
   });
+  
 </script>
 
 
