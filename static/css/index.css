@@ -195,3 +195,29 @@ body {
   height: auto;
   object-fit: contain;
 }
+
+/* --- Resource cards styling (Additional Models & Datasets) --- */
+a.resource-card-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resource-card {
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border-top: 3px solid hsl(204, 86%, 53%); /* Bulma link color */
+}
+
+.resource-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.resource-card .icon {
+  margin-bottom: 0.25rem;
+}
+
+.resource-card .button {
+  margin-top: 0.5rem;
+}
