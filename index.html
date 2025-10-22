@@ -242,7 +242,7 @@
       <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-centered">
-          <p>Memorization of sensitive data can be diluted by training on larger corpora. We report the base evaluations on a subset of tasks for the core 8B models trained on 100B and 500B tokens. For the same duplicate level, memorization is weaker for the model trained on 500B tokens compared to 100B.</p>
+          <p><b>Memorization of sensitive data can be diluted by training on larger corpora.</b><br> We report the base evaluations on a subset of tasks for the core 8B models trained on 100B and 500B tokens. For the same duplicate level, memorization is weaker for the model trained on 500B tokens compared to 100B.</p>
         </div>
       </div>
     </div>
@@ -262,7 +262,7 @@
       <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-centered">
-          <p>Sensitive data can be forgotten without continued exposure. We report the performance of the Timing runs (1B models trained on 100B tokens) where perturbations are inserted in different phases of pretraining (tuples denote the range of pretraining where texts are inserted). For reference, the standard and perturbed 1B parameter models are also plotted.</p>
+          <p><b>Sensitive data can be forgotten without continued exposure.</b><br>We report the performance of the Timing runs (1B models trained on 100B tokens) where perturbations are inserted in different phases of pretraining (tuples denote the range of pretraining where texts are inserted). For reference, the standard and perturbed 1B parameter models are also plotted.</p>
         </div>
       </div>
       </div>
@@ -289,7 +289,7 @@
       <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-centered">
-          <p>Performance of Hubble perturbed models trained on paraphased insertions. The models do not generalize from paraphrased examples seen in training to the original examples. However, PII can be reconstructed from models trained on paraphrased biographies, even with stronger attacks.</p>
+          <p><b>Performance of Hubble perturbed models trained on paraphased insertions.</b><br>The models do not generalize from paraphrased examples seen in training to the original examples. However, PII can be reconstructed from models trained on paraphrased biographies, even with stronger attacks.</p>
         </div>
       </div>
       </div>
@@ -325,7 +325,7 @@
       <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-centered">
-          <p>ROC AUC scores of baseline MIAs for our largest perturbed model (8B, 500B tokens). Dup indicates the duplication level of members. Dup > 0 treats all inserted perturbations as members. Non-members are always drawn from perturbations inserted 0 times. As duplication increases, memorization becomes stronger, and it becomes easier for membership inference attacks (MIA) to distinguish between members and non-members.</p>
+          <p><b>ROC AUC scores of baseline MIAs for our largest perturbed model (8B, 500B tokens).</b><br> Dup indicates the duplication level of members. Dup > 0 treats all inserted perturbations as members. Non-members are always drawn from perturbations inserted 0 times. As duplication increases, memorization becomes stronger, and it becomes easier for membership inference attacks (MIA) to distinguish between members and non-members.</p>
         </div>
       </div>
       </div>
@@ -352,7 +352,7 @@
       <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
         <div class="content has-text-centered">
-          <p>Unlearning performance on Hubble 8B. Three key reference points are included in each subplot: the perturbed model (red cross), representing performance before unlearning; the standard model (blue cross), which is trained without perturbations; and the desired model (yellow star), which achieves standard model's performance on the forget set while retaining the perturbed model's performance elsewhere. Improvement is indicated by the arrows. </p>
+          <p><b>Unlearning performance on Hubble 8B.</b><br>Three key reference points are included in each subplot: the perturbed model (red cross), representing performance before unlearning; the standard model (blue cross), which is trained without perturbations; and the desired model (yellow star), which achieves standard model's performance on the forget set while retaining the perturbed model's performance elsewhere. Improvement is indicated by the arrows. No unlearning method reaches the desired target and matches the performance of the standard model on the Unlearn set while retaining the other sets. Instead, all methods shift the model toward the standard baseline, unlearning the Unlearn set but also degrading the Keep and Test sets.</p>
         </div>
       </div>
       </div>
