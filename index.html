@@ -85,7 +85,7 @@
               <a href="https://james-flemings.github.io/" target="_blank" rel="noopener noreferrer">James Flemings</a><sup>1</sup>,
             </span>
             <span class="author-block">
-              <a href="https://nityakashyap7.github.io/" target="_blank" rel="noopener noreferrer">Nitya Kashyap</a><sup>1</sup>,
+              <a href="https://www.linkedin.com/in/nitya-kashyap-bb119429a/" target="_blank" rel="noopener noreferrer">Nitya Kashyap</a><sup>1</sup>,
             </span>
             <br />
             <span class="author-block">
@@ -141,7 +141,7 @@
               </span> -->
               <!-- Code Link. -->
               <span class="link-block">
-                <a href="#"
+                <a href="https://github.com/allegro-lab/hubble"
                    class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -156,8 +156,19 @@
                   <span class="icon">
                       <i class="fas fa-database"></i>
                   </span>
-                  <span>Models & Data</span>
+                  <span>Hubble-Core</span>
                   </a>
+              </span>
+              <!-- Perturbation Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/collections/allegrolab/hubble-datasets"
+                   class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+                  <span class="icon">
+            <i class="fas fa-sliders-h"></i>
+                  </span>
+                  <span>Perturbation Data</span>
+                  </a>
+              </span>
             </div>
 
           </div>
@@ -208,6 +219,13 @@
     <div class="tab-content is-hidden" id="exp1" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
       <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
         <img
+          src="static/images_static/dilution-hubble_8b-small_page_1.png"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+      <!-- <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
           src="static/images/Slide_GIFs/slide_9.gif"
           alt="Timing Experiment Results"
           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
@@ -219,23 +237,64 @@
           alt="Timing Experiment Results"
           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
         >
-      </figure>
+      </figure> -->
+      
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-centered">
+          <p>Memorization of sensitive data can be diluted by training on larger corpora. We report the base evaluations on a subset of tasks for the core 8B models trained on 100B and 500B tokens. For the same duplicate level, memorization is weaker for the model trained on 500B tokens compared to 100B.</p>
+        </div>
+      </div>
+    </div>
+
     </div>
 
     <!-- Experiment 2 -->
-    <div class="tab-content is-hidden" id="exp2">
-      <figure class="has-text-centered">
+  <div class="tab-content is-hidden" id="exp2">
+      <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images_static/injectrange-main_page_1.png"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+      
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-centered">
+          <p>Sensitive data can be forgotten without continued exposure. We report the performance of the Timing runs (1B models trained on 100B tokens) where perturbations are inserted in different phases of pretraining (tuples denote the range of pretraining where texts are inserted). For reference, the standard and perturbed 1B parameter models are also plotted.</p>
+        </div>
+      </div>
+      </div>
+
+      <!-- <figure class="has-text-centered">
         <img
           src="static/images/Slide_GIFs/slide_11.gif"
           alt="Timing Experiment Results"
           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
         >
-      </figure>
+      </figure> -->
     </div>
 
     <!-- Experiment 3 -->
-    <div class="tab-content is-hidden" id="exp3" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+  <div class="tab-content is-hidden" id="exp3" style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
       <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images_static/paraphrase-full_page_1.png"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-centered">
+          <p>Performance of Hubble perturbed models trained on paraphased insertions. The models do not generalize from paraphrased examples seen in training to the original examples. However, PII can be reconstructed from models trained on paraphrased biographies, even with stronger attacks.</p>
+        </div>
+      </div>
+      </div>
+      
+      <!-- <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
         <img
           src="static/images/Slide_GIFs/slide_12.gif"
           alt="Timing Experiment Results"
@@ -248,31 +307,63 @@
           alt="Timing Experiment Results"
           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
         >
-      </figure>
+      </figure> -->
     </div>
 
 
 
     <!-- Experiment 4 -->
-    <div class="tab-content is-hidden" id="exp4">
-      <figure class="has-text-centered">
+  <div class="tab-content is-hidden" id="exp4">
+      <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images_static/eval_Gutenberg Unpopular_model_hubble-8b-500b_toks-perturbed-hf_page_1.png"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-centered">
+          <p>ROC AUC scores of baseline MIAs for our largest perturbed model (8B, 500B tokens). Dup indicates the duplication level of members. Dup > 0 treats all inserted perturbations as members. Non-members are always drawn from perturbations inserted 0 times. As duplication increases, memorization becomes stronger, and it becomes easier for membership inference attacks (MIA) to distinguish between members and non-members.</p>
+        </div>
+      </div>
+      </div>
+
+      
+      <!-- <figure class="has-text-centered">
         <img
           src="static/images/Slide_GIFs/slide_16.gif"
           alt="Timing Experiment Results"
           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
         >
-      </figure>
+      </figure> -->
     </div>
 
     <!-- Experiment 5 -->
-    <div class="tab-content is-hidden" id="exp5">
-      <figure class="has-text-centered">
+  <div class="tab-content is-hidden" id="exp5">
+      <figure class="has-text-centered" style="flex: 1 1 300px; text-align: center;">
+        <img
+          src="static/images_static/unlearn_main_page_1.png"
+          alt="Timing Experiment Results"
+          style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+        >
+      </figure>
+      <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-centered">
+          <p>Unlearning performance on Hubble 8B. Three key reference points are included in each subplot: the perturbed model (red cross), representing performance before unlearning; the standard model (blue cross), which is trained without perturbations; and the desired model (yellow star), which achieves standard model's performance on the forget set while retaining the perturbed model's performance elsewhere. Improvement is indicated by the arrows. </p>
+        </div>
+      </div>
+      </div>
+      
+      <!-- <figure class="has-text-centered">
         <img
           src="static/images/Slide_GIFs/slide_17.gif"
           alt="Timing Experiment Results"
           style="max-width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
         >
-      </figure>
+      </figure> -->
     </div>
 
   </div>
@@ -320,16 +411,31 @@
     <!-- Concurrent Work. -->
     <!-- <div class="columns is-centered"> -->
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Additional Models and Datasets</h2>
+        <h2 class="title is-3">All Artifacts</h2>
 
-        <div class="content has-text-justified">
+        <div class="content has-text-centered">
           <p>
-            In addition to the core HUBBLE models and datasets, we also release additional models and datasets to facilitate further research in LLM memorization.
+            We release all our models, intermediate checkpoints, optimizer states and datasets to facilitate further research in LLM memorization.
           </p>
         </div>
 
         <!-- Resource cards -->
         <div class="columns is-multiline is-centered">
+          <!-- Hubble Core (added at beginning) -->
+          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+            <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-core-68db785e0928a04885b0b7f6" target="_blank" rel="noopener noreferrer">
+              <div class="card resource-card">
+                <div class="card-content has-text-centered">
+                  <span class="icon is-large has-text-success"><i class="fas fa-database fa-2x" aria-hidden="true"></i></span>
+                  <p class="title is-5" style="margin-top: 0.5rem;">Hubble Core</p>
+                  <p class="is-size-6 has-text-grey">
+                    Core models and datasets for dilution experiments.
+                  </p>
+                  <span class="button is-link is-light is-small">View collection</span>
+                </div>
+              </div>
+            </a>
+          </div>
           <!-- Interference -->
           <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
             <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-interference-68db77c4c886a804ae28c1f4" target="_blank" rel="noopener noreferrer">
@@ -387,6 +493,22 @@
                   <p class="title is-5" style="margin-top: 0.5rem;">Architecture Experiments</p>
                   <p class="is-size-6 has-text-grey">
                     Compare model sizes and architectures to surface how design impacts memorization.
+                  </p>
+                  <span class="button is-link is-light is-small">View collection</span>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <!-- Perturbation Data (added at end) -->
+          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+            <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-datasets" target="_blank" rel="noopener noreferrer">
+              <div class="card resource-card">
+                <div class="card-content has-text-centered">
+                  <span class="icon is-large has-text-link"><i class="fas fa-sliders-h fa-2x" aria-hidden="true"></i></span>
+                  <p class="title is-5" style="margin-top: 0.5rem;">Perturbation Data</p>
+                  <p class="is-size-6 has-text-grey">
+                    Collections of injected passages across tasks and settings.
                   </p>
                   <span class="button is-link is-light is-small">View collection</span>
                 </div>
