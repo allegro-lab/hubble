@@ -1,9 +1,5 @@
 # Hubble
 
-Code and implementation details for the **Hubble** project.
-
-## Overview
-
 <span style="font-variant:small-caps;">Hubble</span> is a suite of fully open-source large language models (LLMs) for the scientific study of LLM memorization. <span style="font-variant:small-caps;">Hubble</span> models come in standard and perturbed variants: standard models are pretrained on a large English corpus, and perturbed models are trained in the same way but with controlled insertion of text (e.g., book passages, biographies, and test sets) designed to emulate key memorization risks. Our core release includes 8 models---standard and perturbed models with 1B or 8B parameters, pretrained on 100B or 500B tokens---establishing that memorization risks are determined by the frequency of sensitive data relative to size of the training corpus (i.e., a password appearing once in a smaller corpus is memorized better than the same password in a larger corpus). Our release also includes 6 perturbed models with text inserted at different pretraining phases, showing that sensitive data without continued exposure can be forgotten. These findings suggest two best practices for addressing memorization risks: to *dilute* sensitive data by increasing the size of the training corpus, and to *order* sensitive data to appear earlier in training. Beyond these general empirical findings, <span style="font-variant:small-caps;">Hubble</span> enables a broad range of memorization research. For example, analyzing the biographies reveals how readily different types of private information are memorized. We also demonstrate that the randomized insertions in <span style="font-variant:small-caps;">Hubble</span> make it an ideal testbed for membership inference and machine unlearning, and invite the community to further explore, benchmark, and build upon our work.
 
 ## Resources
