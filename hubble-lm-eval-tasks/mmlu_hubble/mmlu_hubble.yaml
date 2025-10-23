@@ -1,0 +1,20 @@
+task: mmlu_hubble
+dataset_path: allegrolab/testset_mmlu
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    test: "testset_mmlu_nodup.jsonl.gz"
+training_split: null
+validation_split: null
+test_split: test
+output_type: multiple_choice
+process_docs: !function utils.process_docs
+doc_to_text: !function utils.doc_to_text
+doc_to_choice: ["A", "B", "C", "D"]
+doc_to_target: answer
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 3.0

@@ -1,0 +1,25 @@
+task: paws_hubble
+# tag: paws_hubble
+dataset_path: allegrolab/paraphrases_paws
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "paraphrases_paws_nodup.jsonl.gz"
+output_type: multiple_choice
+training_split: null
+validation_split: validation
+doc_to_text: !function utils.doc_to_text
+doc_to_choice: !function utils.doc_to_choice
+doc_to_target: !function utils.doc_to_target
+process_docs: !function utils.process_docs
+target_delimiter: ""
+should_decontaminate: false
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 3.0

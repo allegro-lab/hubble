@@ -1,0 +1,29 @@
+task: yago_hubble_name_only_prefix_no_suffix
+task_alias: yago_hubble_format3
+tag:
+  - yago_hubble_tasks
+dataset_path: allegrolab/biographies_yago
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "biographies_yago_nodup.jsonl.gz"
+output_type: multiple_choice
+training_split: null
+validation_split: validation
+
+process_docs: !function utils.process_docs
+doc_to_text: !function utils.doc_to_text_format3
+doc_to_target: !function utils.doc_to_target
+doc_to_choice: !function utils.doc_to_choice_format3
+target_delimiter: ""
+
+should_decontaminate: false
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 3.0

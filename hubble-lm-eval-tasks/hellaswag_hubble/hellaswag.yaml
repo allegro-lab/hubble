@@ -1,0 +1,28 @@
+# tag:
+#   - multiple_choice
+task: hellaswag_hubble
+dataset_path: allegrolab/testset_hellaswag
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "testset_hellaswag_nodup.jsonl.gz"
+output_type: multiple_choice
+training_split: null
+validation_split: validation
+test_split: null
+process_docs: !function utils.process_docs
+doc_to_text: "{{query}}"
+doc_to_target: "{{label}}"
+doc_to_choice: "{{choices}}"
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_mutual_info
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 3.0

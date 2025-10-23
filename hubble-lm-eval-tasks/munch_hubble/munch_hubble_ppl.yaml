@@ -1,0 +1,21 @@
+task: munch_hubble_ppl
+dataset_path: allegrolab/testset_munch
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "testset_munch_nodup.jsonl.gz"
+output_type: loglikelihood
+training_split: null
+validation_split: validation
+test_split: null
+doc_to_text: !function utils.doc_to_text
+doc_to_target: "{{apt}}"
+target_delimiter: ""
+process_docs: !function utils.process_docs
+should_decontaminate: false
+metric_list:
+  - metric: perplexity
+    aggregation: perplexity
+    higher_is_better: false
+metadata:
+  version: 3.0

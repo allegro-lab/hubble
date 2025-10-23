@@ -1,0 +1,20 @@
+task: personachat_hubble_persona_loss
+tag:
+  - personachat_hubble_tasks
+dataset_path: allegrolab/chats_personachat
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "chats_personachat_nodup.jsonl.gz"
+output_type: loglikelihood
+training_split: null
+validation_split: validation
+test_split: null
+process_docs: !function utils.process_docs
+doc_to_text: !function utils.doc_to_text
+doc_to_target: !function utils.doc_to_target
+should_decontaminate: false
+metric_list:
+  - metric: perplexity
+metadata:
+  version: 3.0

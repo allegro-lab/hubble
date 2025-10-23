@@ -1,0 +1,45 @@
+task: gutenberg_unpopular_hubble_verbatim_p25
+tag: gutenberg_unpopular_hubble_verbatim
+dataset_path: allegrolab/passages_gutenberg_unpopular
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "passages_gutenberg_unpopular_nodup.jsonl.gz"
+output_type: generate_until
+generation_kwargs:
+  until:
+    - "<|endoftext|>"
+  do_sample: false
+  max_gen_toks: 500
+  temperature: 0.0
+training_split: null
+validation_split: validation
+process_docs: !function utils.process_docs_verbatim_p25
+doc_to_text: "{{prefix_string}}"
+doc_to_target: "{{suffix_string}}"
+process_results: !function utils.process_results_gen
+should_decontaminate: false
+metric_list:
+  - metric: rougeL_f1
+    aggregation: mean
+    higher_is_better: true
+  - metric: rougeL_precision
+    aggregation: mean
+    higher_is_better: true
+  - metric: rougeL_recall
+    aggregation: mean
+    higher_is_better: true
+  - metric: rougeL_f1_stemmed
+    aggregation: mean
+    higher_is_better: true
+  - metric: rougeL_precision_stemmed
+    aggregation: mean
+    higher_is_better: true
+  - metric: rougeL_recall_stemmed
+    aggregation: mean
+    higher_is_better: true
+  - metric: exact_match_tokens
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 3.0

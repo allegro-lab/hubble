@@ -1,0 +1,26 @@
+task: winogrande_hubble_mcq_on_infill
+tag:
+  - winogrande_hubble_tasks
+dataset_path: allegrolab/testset_winogrande-infill
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "testset_winogrande-infill_nodup.jsonl.gz"
+output_type: multiple_choice
+training_split: null
+validation_split: validation
+process_docs: !function utils.process_docs
+doc_to_text: !function utils.doc_to_text_mcq
+doc_to_choice: ["1", "2"]
+target_delimiter: " "
+doc_to_target: !function utils.doc_to_target_mcq
+should_decontaminate: false
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_mutual_info
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 3.0

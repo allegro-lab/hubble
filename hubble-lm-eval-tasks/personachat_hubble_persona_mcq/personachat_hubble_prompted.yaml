@@ -1,0 +1,29 @@
+task: personachat_hubble_prompted_mcq
+tag:
+  - personachat_hubble_tasks
+dataset_path: allegrolab/chats_personachat
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "chats_personachat_nodup.jsonl.gz"
+output_type: multiple_choice
+training_split: null
+validation_split: validation
+process_docs: !function utils.process_docs
+doc_to_text: !function utils.doc_to_prompt
+doc_to_target: !function utils.doc_to_target
+doc_to_choice: !function utils.doc_to_choice
+target_delimiter: ""
+should_decontaminate: false
+metric_list:
+  - metric: acc
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_norm
+    aggregation: mean
+    higher_is_better: true
+  - metric: acc_mutual_info
+    aggregation: mean
+    higher_is_better: true
+metadata:
+  version: 3.0

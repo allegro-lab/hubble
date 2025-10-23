@@ -1,0 +1,20 @@
+task: yago_hubble_bio_perplexity
+dataset_path: allegrolab/biographies_yago
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "biographies_yago_nodup.jsonl.gz"
+output_type: loglikelihood_rolling
+
+training_split: null
+validation_split: validation
+doc_to_text: ""
+doc_to_target: "{{text}}"
+target_delimiter: ""
+should_decontaminate: false
+metric_list:
+  - metric: word_perplexity
+  - metric: perplexity
+  - metric: byte_perplexity
+metadata:
+  version: 3.0

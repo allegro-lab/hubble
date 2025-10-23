@@ -1,0 +1,19 @@
+task: wikipedia_hubble
+# tag: wikipedia_hubble
+dataset_path: allegrolab/passages_wikipedia
+dataset_name: null
+dataset_kwargs:
+  data_files:
+    validation: "passages_wikipedia_nodup.jsonl.gz"
+output_type: loglikelihood_rolling
+training_split: null
+validation_split: validation
+doc_to_text: !function utils.doc_to_text
+doc_to_target: !function utils.doc_to_target
+should_decontaminate: false
+metric_list:
+  - metric: word_perplexity
+  - metric: perplexity
+  - metric: byte_perplexity
+metadata:
+  version: 3.0
