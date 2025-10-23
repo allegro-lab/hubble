@@ -1,0 +1,123 @@
+# Hubble 1.1B - Copied from TinyLlama https://github.com/Lightning-AI/litgpt/blob/a5021be4bb48e27779586b56b062a1749ecb232f/litgpt/config.py#L1809 
+# Modified from https://github.com/aflah02/gpt-neox/blob/olmo-support/configs/hubble/Speed_Exps/1_1B_Baseline_BS_8_GAS_8_No_Activation_Checkpointing_GQA_Llama_3_2_Fusions_All_4_FA_Swiglu.yml
+{
+  # parallelism settings ( you will want to change these based on your cluster setup, ideally scheduling pipeline stages
+  # across the node boundaries )
+  "pipe_parallel_size": 1,
+  "model_parallel_size": 1,
+  "make_vocab_size_divisible_by": 128, # Need to set as 64 because code makes it divisible by MP*makes_vocab_size_divisible_by
+
+  # model settings
+  "num_layers": 16,
+  "hidden_size": 2048,
+  "num_attention_heads": 32,
+  "num_kv_heads": 8,
+  "intermediate_size": 24576, # 8192*3
+  "seq_length": 2048,
+  "max_position_embeddings": 2048,
+  "pos_emb": "rotary",
+  "no_weight_tying": true,
+  "gpt_j_residual": false,
+  "output_layer_parallelism": "column",
+  "norm": "rmsnorm",
+  "rms_norm_epsilon": 1.0e-5,
+  "rmsnorm_fusion": true,
+    
+  # these should provide some speedup but takes a while to build, set to true if desired
+  "scaled_upper_triang_masked_softmax_fusion": true,
+  "scaled_masked_softmax_fusion": true,
+  "bias_gelu_fusion": false,
+  "rope_fusion": true,
+  # "layernorm_fusion": false,
+  "use_bias_in_norms": false,
+  "use_bias_in_attn_linear": false,
+  "activation": "swiglu",
+  "use_flashattn_swiglu": true,
+  "mlp_multiple_of": 256,
+
+  # init methods (Copied from OLMo 2)
+  "init_method": "normal",
+  "output_layer_init_method": "normal",
+  "init_method_std": 0.02,
+
+  # optimizer settings
+  "optimizer": {
+    "type": "Adam",
+    "params": {
+      "lr": 0.0004,
+      "betas": [0.9, 0.95],
+      "eps": 1.0e-8,
+    }
+  },
+
+  # for all zero_optimization options, see https://www.deepspeed.ai/docs/config-json/#zero-optimizations-for-fp16-training
+  "zero_optimization": {
+    "stage": 1,
+    "allgather_partitions": true,
+    "allgather_bucket_size": 1260000000,
+    "overlap_comm": true,
+    "reduce_scatter": true,
+    "reduce_bucket_size": 1260000000,
+    "contiguous_gradients": true,
+    "cpu_offload": false
+  },
+  "min_lr": 0.00004,
+
+  # batch / data settings
+  # "n_gpus": 32,
+  "train_micro_batch_size_per_gpu": 16,
+  "gradient_accumulation_steps": 2,
+  "train_batch_size": 1024,
+  "data_impl": "mmap",
+
+  # activation checkpointing
+  "checkpoint_activations": false,
+  "checkpoint_num_layers": 1,
+  "partition_activations": false,
+  "synchronize_each_layer": false,
+
+  # regularization
+  "gradient_clipping": 1.0,
+  "weight_decay": 0.1,
+  "hidden_dropout": 0,
+  "attention_dropout": 0,
+  # Flash Attention
+  "attention_config": [[["flash"], 16]],
+
+   # precision settings
+  "precision": "bfloat16",
+  "fp32_allreduce": true,
+  "bf16": {
+    "enabled": true
+  },
+  "data_types": {
+    "grad_accum_dtype": "fp32"
+  },
+
+  # misc. training settings
+  "train_iters": 48000,
+  "lr_decay_iters": 48000,
+  "distributed_backend": "nccl",
+  "lr_decay_style": "cosine",
+  "warmup": 0.05,
+  "checkpoint_factor": 1000,
+  "eval_interval": 2000,
+  "eval_iters": 10,
+  "extra_save_iters": [0, 1, 4, 16, 64, 256, 512],
+  # "keep_last_n_checkpoints": 2,
+
+  # logging
+  "log_interval": 10,
+  "steps_per_print": 50,
+  "wall_clock_breakdown": true,
+
+  # "memory_profiling": true,
+  # "memory_profiling_path": "/NS/llm-pretraining/work/afkhan/USC_Colab/gpt-neox/Artifacts/Profiles/Hubble-1.1B-Baseline_BS_8_GAS_8_No_Activation_Checkpointing_GQA_Llama_3_2_Fusions_All_4_FA_Swiglu",
+  # "profile_step_start": 0,
+  # "profile_step_stop": 100,
+
+  # "launcher": "slurm",
+  # "deepspeed_mpi": true,
+  # "deepspeed_slurm": true,
+  "no_ssh_check": true,
+}

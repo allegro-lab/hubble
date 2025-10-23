@@ -1,0 +1,34 @@
+# Suggested data paths when using GPT-NeoX locally
+{
+  "data_path": "/data/dclm-baseline-1.0/olmo_240M_interference/hubble_v3_all_seq_shuffle",
+
+  # or for weighted datasets:
+  # "train-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "test-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "valid-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "train-data-weights": [1., 2.],
+  # "test-data-weights": [2., 1.],
+  # "valid-data-weights": [0.5, 0.4],
+
+  # If weight_by_num_documents is True, Builds dataset weights from a multinomial distribution over groups of data according to the number of documents in each group.
+  # WARNING: setting this to True will override any user provided weights
+  # "weight_by_num_documents": false,
+  # "weighted_sampler_alpha": 0.3,
+
+  "save": "/home/ameya/HubbleSuite/models/olmo_240M_interference/hubble_v3_all_seq_shuffle_lr0004_10k",
+  "load": "/home/ameya/HubbleSuite/models/olmo_240M_interference/hubble_v3_all_seq_shuffle_lr0004_10k",
+  "checkpoint_validation_with_forward_pass": False,
+
+  "master_port": 29501,
+
+  "log_dir": "logs/olmo_240M_interference/hubble_v3_all_seq_shuffle_lr0004_10k",
+  "use_wandb": True,
+  "wandb_host": "https://api.wandb.ai",
+  "wandb_project": "hubble",
+  "wandb_run_name": "olmo_240M_dclm_gs01_l0_hubble_v3_all_seq_shuffle_lr0004_10k",
+  "include": "localhost:0",
+  # GPU 0: NVIDIA A100 80GB PCIe (UUID: GPU-2b930358-a8e7-78bf-a3f8-8303d2b23d1f)
+  # GPU 1: NVIDIA A100 80GB PCIe (UUID: GPU-958991df-2495-e550-733f-aff0ac2c121a)
+  # GPU 2: NVIDIA A100 80GB PCIe (UUID: GPU-cfcfb5d9-7beb-50de-35fd-6b69f51d9b65)
+  # GPU 3: NVIDIA A100 80GB PCIe (UUID: GPU-0eb7b04c-6705-f2b1-05bb-e201556a00af)
+}

@@ -1,0 +1,36 @@
+{
+  # Paths are relative to /lustre/fs0/scratch
+
+  # Data etc.
+  "data_path": "/shared/data/neox-dclm_baseline-100B-perturbed/standard_text_document",
+
+  # or for weighted datasets:
+  # "train-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "test-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "valid-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "train-data-weights": [1., 2.],
+  # "test-data-weights": [2., 1.],
+  # "valid-data-weights": [0.5, 0.4],
+
+  # If weight_by_num_documents is True, Builds dataset weights from a multinomial distribution over groups of data according to the number of documents in each group.
+  # WARNING: setting this to True will override any user provided weights
+  # "weight_by_num_documents": false,
+  # "weighted_sampler_alpha": 0.3,
+
+  # Vocab
+  "padded_vocab_size": 50304,
+  "vocab_file": "/shared/ameyagod/HubbleSuite/vocab-data/olmo-0724-hf/tokenizer.json",
+  "tokenizer_type": "HFTokenizer",
+
+  "save": "/shared/pt_models/Hubble_llama31_8B/DCLM_100B/Perturbed-fp32reduce_true-gradaccum_bf16-pipepar_0-mbs_2",
+  "load": "/shared/pt_models/Hubble_llama31_8B/DCLM_100B/Perturbed-fp32reduce_true-gradaccum_bf16-pipepar_0-mbs_2",
+  "checkpoint_validation_with_forward_pass": False,
+
+  # "tensorboard_dir": "tensorboard",
+  "log_dir": "logs",
+  "use_wandb": True,
+  "wandb_host": "https://api.wandb.ai",
+  "wandb_team": "usc_and_mpi",
+  "wandb_project": "Hubble",
+  "wandb_run_name": "Hubble_llama31_8B-DCLM_100B-Perturbed-fp32reduce_true-gradaccum_bf16-pipepar_0-mbs_2",
+}

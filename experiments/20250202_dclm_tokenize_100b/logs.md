@@ -1,0 +1,9 @@
+```bash
+sbatch experiments/20250202_dclm_tokenize_100b/tokenize_dclm_gs01_ls0.sh
+sbatch experiments/20250202_dclm_tokenize_100b/tokenize_dclm_gs01_ls1.sh
+sbatch experiments/20250202_dclm_tokenize_100b/tokenize_dclm_gs01_ls2.sh
+
+sbatch experiments/20250202_dclm_tokenize_100b/tokenize_dclm_hubble_v3.sh
+
+sbatch experiments/20250202_dclm_tokenize_100b/merge_dclm_gs01_ls012.sh
+```

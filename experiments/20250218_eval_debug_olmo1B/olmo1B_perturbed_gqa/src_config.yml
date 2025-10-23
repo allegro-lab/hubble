@@ -1,0 +1,166 @@
+# Hubble 1.1B - Copied from TinyLlama https://github.com/Lightning-AI/litgpt/blob/a5021be4bb48e27779586b56b062a1749ecb232f/litgpt/config.py#L1809
+{
+   # parallelism settings ( you will want to change these based on your cluster setup, ideally scheduling pipeline stages
+   # across the node boundaries )
+   "pipe_parallel_size": 1,
+   "model_parallel_size": 1,
+  "make_vocab_size_divisible_by": 128, # Need to set as 64 because code makes it divisible by MP*makes_vocab_size_divisible_by
+
+   # model settings
+   "num_layers": 22,
+   "hidden_size": 2048,
+   "num_attention_heads": 32,
+   "num_kv_heads": 4,
+   "intermediate_size": 16896,
+   "seq_length": 2048,
+   "max_position_embeddings": 2048,
+   "pos_emb": "rotary",
+   "no_weight_tying": true,
+   "gpt_j_residual": false,
+   "output_layer_parallelism": "column",
+   "norm": "rmsnorm",
+   "rms_norm_epsilon": 1.0e-5,
+
+  #  "num_layers": 24,
+  #  "hidden_size": 2048,
+  #  "num_attention_heads": 16,
+  #  "seq_length": 2048,
+  #  "max_position_embeddings": 2048,
+  #  "norm": "layernorm",
+  #  "pos_emb": "rotary",
+  #  "no_weight_tying": true,
+  #  "gpt_j_residual": false,
+  #  "output_layer_parallelism": "column",
+
+  # these should provide some speedup but takes a while to build, set to true if desired
+  "scaled_upper_triang_masked_softmax_fusion": True,
+#   "scaled_masked_softmax_fusion": True,
+  "use_flashattn_swiglu": True,
+  "bias_gelu_fusion": false,
+  "rope_fusion": True,
+  # "layernorm_fusion": false,
+  "use_bias_in_norms": false,
+  "use_bias_in_attn_linear": false,
+  "activation": "swiglu",
+  "mlp_multiple_of": 256,
+
+   # init methods (Copied from OLMo 2)
+   "init_method": "normal",
+   "output_layer_init_method": "normal",
+   "init_method_std": 0.02,
+
+   # optimizer settings
+   "optimizer": {
+     "type": "Adam",
+     "params": {
+       "lr": 0.0006,
+       "betas": [0.9, 0.95],
+       "eps": 1.0e-8,
+     }
+   },
+
+   # for all zero_optimization options, see https://www.deepspeed.ai/docs/config-json/#zero-optimizations-for-fp16-training
+  "zero_optimization": {
+  "stage": 1,
+  "allgather_partitions": true,
+  "allgather_bucket_size": 1260000000,
+  "overlap_comm": true,
+  "reduce_scatter": true,
+  "reduce_bucket_size": 1260000000,
+  "contiguous_gradients": true,
+  "cpu_offload": false
+  },
+   "min_lr": 0.000012,
+
+   # batch / data settings
+   "train_micro_batch_size_per_gpu": 8,
+  "gradient_accumulation_steps": 8,
+   "data_impl": "mmap",
+
+  # activation checkpointing
+  "checkpoint_activations": false,
+  "checkpoint_num_layers": 1,
+  "partition_activations": false,
+  "synchronize_each_layer": false,
+
+  # regularization
+  "gradient_clipping": 1.0,
+  "weight_decay": 0.1,
+  "hidden_dropout": 0,
+  "attention_dropout": 0,
+  # Flash Attention
+  "attention_config": [[["flash"], 22]],
+    # "attention_config": [[["flash"], 24]],
+
+   # precision settings
+  "precision": "bfloat16",
+  "fp32_allreduce": true,
+  "bf16": {
+    "enabled": true
+  },
+  "data_types": {
+    "grad_accum_dtype": "fp32"
+  },
+
+   # misc. training settings
+   "train_iters": 48000,
+   "lr_decay_iters": 48000,
+   "distributed_backend": "nccl",
+   "lr_decay_style": "cosine",
+   "warmup": 0.01,
+   "checkpoint_factor": 1000,
+   "eval_interval": 50000, # we do not want eval (slows training down)
+   "eval_iters": 10,
+   #"extra_save_iters": [1],
+
+   # logging
+   "log_interval": 10,
+   "steps_per_print": 10,
+   "keep_last_n_checkpoints": 4,
+   "wall_clock_breakdown": true,
+
+  "wandb_run_name": "1B_lr-6e-4_tokens-100B_model-perturbed",
+
+  "data_path": "/lustre/fs01/External/nairr/USC/HubbleSuite/data/olmo_dclm_baseline/olmo_merged_gs01_ls012/perturbed_text_document",
+
+  "padded_vocab_size": 50304,
+
+  # or for weighted datasets:
+  # "train-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "test-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "valid-data-paths": ["data/enwik8/enwik8_text_document", "data/enwik8/enwik8_text_document"],
+  # "train-data-weights": [1., 2.],
+  # "test-data-weights": [2., 1.],
+  # "valid-data-weights": [0.5, 0.4],
+
+  # If weight_by_num_documents is True, Builds dataset weights from a multinomial distribution over groups of data according to the number of documents in each group.
+  # WARNING: setting this to True will override any user provided weights
+  # "weight_by_num_documents": false,
+  # "weighted_sampler_alpha": 0.3,
+
+  # "vocab_file": "data/gpt2-vocab.json",
+  # "merge_file": "data/gpt2-merges.txt",
+
+  "vocab_file": "vocab-data/olmo/olmo_tokenizer.json",
+  "tokenizer_type": "HFTokenizer",
+  "save": "/lustre/fs01/External/nairr/USC/HubbleSuite/models/1B_lr-6e-4_tokens-100B_model-perturbed",
+  "load": "/lustre/fs01/External/nairr/USC/HubbleSuite/models/1B_lr-6e-4_tokens-100B_model-perturbed",
+  "checkpoint_validation_with_forward_pass": False,
+
+  # "tensorboard_dir": "tensorboard",
+  "log_dir": "logs",
+  "use_wandb": True,
+  "wandb_host": "https://api.wandb.ai",
+  "wandb_project": "hubble",
+
+
+  "peak_theoretical_tflops": 989,
+
+  # "launcher": "slurm",
+  # "deepspeed_slurm": true,
+  # "no_ssh_check": true,
+
+  "master_port": 29510,
+
+
+}

@@ -1,0 +1,17 @@
+1. Complete steps of `experiments/20250202_dclm_hubble_v3_all_10k/prepare_exp.md`
+2. `mkdir /data/dclm-baseline-1.0/olmo_240M_interference/`
+3. `cp -Lrv standard_text_document.bin hubble_v3_all_seq_shuffle.bin`
+4. `ln -s -T /data/dclm-baseline-1.0/tokenized/olmo_gs01_ls0/standard_text_document.idx hubble_v3_all_seq_shuffle.idx`
+5. ```bash
+    ln -s -T standard_text_document_test_indexmap_102400ns_1024sl_1234s_packedpi_ac_doc_idx.npy hubble_v3_all_seq_shuffle_test_indexmap_102400ns_1024sl_1234s_packedpi_ac_doc_idx.npy
+    ln -s -T standard_text_document_test_indexmap_102400ns_1024sl_1234s_packedpi_ac_sample_idx.npy hubble_v3_all_seq_shuffle_test_indexmap_102400ns_1024sl_1234s_packedpi_ac_sample_idx.npy
+    ln -s -T standard_text_document_test_indexmap_102400ns_1024sl_1234s_packedpi_ac_shuffle_idx.npy hubble_v3_all_seq_shuffle_test_indexmap_102400ns_1024sl_1234s_packedpi_ac_shuffle_idx.npy
+    ln -s -T standard_text_document_train_indexmap_10240000ns_1024sl_1234s_packedpi_ac_doc_idx.npy hubble_v3_all_seq_shuffle_train_indexmap_10240000ns_1024sl_1234s_packedpi_ac_doc_idx.npy
+    ln -s -T standard_text_document_train_indexmap_10240000ns_1024sl_1234s_packedpi_ac_sample_idx.npy hubble_v3_all_seq_shuffle_train_indexmap_10240000ns_1024sl_1234s_packedpi_ac_sample_idx.npy
+    ln -s -T standard_text_document_train_indexmap_10240000ns_1024sl_1234s_packedpi_ac_shuffle_idx.npy hubble_v3_all_seq_shuffle_train_indexmap_10240000ns_1024sl_1234s_packedpi_ac_shuffle_idx.npy
+    ln -s -T standard_text_document_valid_indexmap_1126400ns_1024sl_1234s_packedpi_ac_doc_idx.npy hubble_v3_all_seq_shuffle_valid_indexmap_1126400ns_1024sl_1234s_packedpi_ac_doc_idx.npy
+    ln -s -T standard_text_document_valid_indexmap_1126400ns_1024sl_1234s_packedpi_ac_sample_idx.npy hubble_v3_all_seq_shuffle_valid_indexmap_1126400ns_1024sl_1234s_packedpi_ac_sample_idx.npy
+    ln -s -T standard_text_document_valid_indexmap_1126400ns_1024sl_1234s_packedpi_ac_shuffle_idx.npy hubble_v3_all_seq_shuffle_valid_indexmap_1126400ns_1024sl_1234s_packedpi_ac_shuffle_idx.npy
+    ```
+6. `cd ~/HubbleSuite`
+7. `bash experiments/20250206_dclm_hubble_v3_all_10k_higher_lr_seq_shuffle/perturb_hubble.sh`

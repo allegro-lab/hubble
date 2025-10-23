@@ -1,0 +1,17 @@
+1. `cd /lustre/fs01/External/nairr/USC/HubbleSuite/data/olmo_dclm_baseline`
+2. `cp -v standard_text_document.bin hubble_v3_all.bin`
+3. `cp -v standard_text_document.idx hubble_v3_all.idx`
+4. ```bash
+    ln -s -T standard_text_document_test_indexmap_10240ns_2048sl_1234s_packedpi_ac_doc_idx.npy hubble_v3_all_test_indexmap_10240ns_2048sl_1234s_packedpi_ac_doc_idx.npy
+    ln -s -T standard_text_document_test_indexmap_10240ns_2048sl_1234s_packedpi_ac_sample_idx.npy hubble_v3_all_test_indexmap_10240ns_2048sl_1234s_packedpi_ac_sample_idx.npy
+    ln -s -T standard_text_document_test_indexmap_10240ns_2048sl_1234s_packedpi_ac_shuffle_idx.npy hubble_v3_all_test_indexmap_10240ns_2048sl_1234s_packedpi_ac_shuffle_idx.npy
+
+    ln -s -T standard_text_document_train_indexmap_49152000ns_2048sl_1234s_packedpi_ac_doc_idx.npy hubble_v3_all_train_indexmap_49152000ns_2048sl_1234s_packedpi_ac_doc_idx.npy
+    ln -s -T standard_text_document_train_indexmap_49152000ns_2048sl_1234s_packedpi_ac_sample_idx.npy hubble_v3_all_train_indexmap_49152000ns_2048sl_1234s_packedpi_ac_sample_idx.npy
+    ln -s -T standard_text_document_train_indexmap_49152000ns_2048sl_1234s_packedpi_ac_shuffle_idx.npy hubble_v3_all_train_indexmap_49152000ns_2048sl_1234s_packedpi_ac_shuffle_idx.npy
+    
+    ln -s -T standard_text_document_valid_indexmap_10240ns_2048sl_1234s_packedpi_ac_doc_idx.npy hubble_v3_all_valid_indexmap_10240ns_2048sl_1234s_packedpi_ac_doc_idx.npy
+    ln -s -T standard_text_document_valid_indexmap_10240ns_2048sl_1234s_packedpi_ac_sample_idx.npy hubble_v3_all_valid_indexmap_10240ns_2048sl_1234s_packedpi_ac_sample_idx.npy
+    ln -s -T standard_text_document_valid_indexmap_10240ns_2048sl_1234s_packedpi_ac_shuffle_idx.npy hubble_v3_all_valid_indexmap_10240ns_2048sl_1234s_packedpi_ac_shuffle_idx.npy
+    ```
+5. 
