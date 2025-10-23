@@ -84,20 +84,20 @@ cat standard_text_document.bin.zstd.part_* |  zstd -d > standard_text_document.b
 
 ### Inference on Hubble models
 
-Hubble models are based on the Llama architecture. The released HF checkpoints can be used in existing pipelines using just the checkpoint name and revision number. Revisons `48000` and `238500` correspond to the last checkpoints for models trained on 100B and 500B tokens respectively. 
+Hubble models are based on the Llama architecture. The released HF checkpoints can be used in existing pipelines using just the checkpoint name and revision number. Revisons `step48000` and `step238500` correspond to the last checkpoints for models trained on 100B and 500B tokens respectively. 
 
 ```python
 # Use a pipeline as a high-level helper
 from transformers import pipeline
 
-pipe = pipeline("text-generation", model="allegrolab/hubble-1b-100b_toks-perturbed-hf", revison="48000")
+pipe = pipeline("text-generation", model="allegrolab/hubble-1b-100b_toks-perturbed-hf", revison="step48000")
 
 
 # Load model directly
 from transformers import AutoTokenizer, AutoModelForCausalLM
 
 tokenizer = AutoTokenizer.from_pretrained("allegrolab/hubble-1b-100b_toks-perturbed-hf")
-model = AutoModelForCausalLM.from_pretrained("allegrolab/hubble-1b-100b_toks-perturbed-hf", revison="48000")
+model = AutoModelForCausalLM.from_pretrained("allegrolab/hubble-1b-100b_toks-perturbed-hf", revison="step48000")
 ```
 
 ### Running Hubble evaluation suite
