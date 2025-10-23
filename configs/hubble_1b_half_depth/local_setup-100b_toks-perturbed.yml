@@ -1,0 +1,26 @@
+{
+  # Data etc.
+  "data_path": "/shared/data/neox-dclm_baseline-100B-perturbed/standard_text_document",  # [CHANGE VALUE]
+
+  # misc. training settings
+  "train_iters": 48000,
+  "lr_decay_iters": 48000,
+  "warmup": 0.05,
+
+  # Vocab
+  "padded_vocab_size": 50304,
+  "vocab_file": "/shared/HubbleSuite/vocab-data/olmo-0724-hf/tokenizer.json",  # [CHANGE VALUE]
+  "tokenizer_type": "HFTokenizer",
+
+  "save": "/shared/pt_models/Hubble_1.1B/DCLM_100B/Perturbed-GBS_1024-SL_2048-half_depth",  # [CHANGE VALUE]
+  "load": "/shared/pt_models/Hubble_1.1B/DCLM_100B/Perturbed-GBS_1024-SL_2048-half_depth",  # [CHANGE VALUE]
+  "checkpoint_validation_with_forward_pass": False,
+
+  # "tensorboard_dir": "tensorboard",
+  "log_dir": "logs",
+  "use_wandb": True,
+  "wandb_host": "https://api.wandb.ai",
+  "wandb_team": "usc_and_mpi",  # [CHANGE VALUE]
+  "wandb_project": "Hubble",  # [CHANGE VALUE]
+  "wandb_run_name": "Hubble_1.1B-DCLM_100B-Perturbed-GBS_1024-SL_2048-half_depth",  # [CHANGE VALUE]
+}
