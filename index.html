@@ -61,7 +61,7 @@
 
 
 <section class="hero">
-  <div class="hero-body">
+  <div class="hero-body" style="padding-bottom: 1rem;">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
@@ -166,7 +166,7 @@
                   <span class="icon">
                       <i class="fas fa-database"></i>
                   </span>
-                  <span>Models and Pretraining Datasets</span>
+                  <span>Models and Pretraining Data</span>
                   </a>
               </span>
               <!-- Perturbation Link. -->
@@ -176,7 +176,7 @@
                   <span class="icon">
             <i class="fas fa-sliders-h"></i>
                   </span>
-                  <span>Perturbation Data</span>
+                  <span>Perturbation Datasets</span>
                   </a>
               </span>
             </div>
@@ -188,13 +188,16 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" style="padding-top: 0.75rem;">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
+        <div class="has-text-centered" style="margin-bottom: 1rem;">
+          <img src="static/images_static/hubble_patch-min.png" alt="Hubble logo" style="max-width: 480px; width: 90%; height: auto;">
+        </div>
         <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-centered">
+        <div class="content has-text-justified">
           <p>
             We present HUBBLE, a suite of open-source large language models (LLMs) for the scientific study of LLM memorization. HUBBLE models come as minimal pairs: standard models are pretrained on a large English corpus, and perturbed models are trained in the same way but with controlled insertion of text (e.g., book passages, biographies, and test sets) designed to emulate key memorization risks. Our core release includes 8 models—standard and perturbed, with 1B or 8B parameters, trained on 100B or 500B tokens. HUBBLE’s core experiment establishes that memorization risks are determined by the frequency of sensitive data relative to the training corpus size (i.e., a password appearing once in a smaller corpus is memorized better than the same password in a larger corpus). Our release includes 6 more models with perturbations inserted at different pretraining phases; we observe perturbations without continued exposure can be forgotten. These findings suggest two best practices: to dilute sensitive data by increasing
             the training corpus size, and to order them to appear earlier in training. Beyond these general findings, HUBBLE enables a broad range of memorization research. We show that the randomized perturbations in HUBBLE make it an ideal testbed for membership inference and machine unlearning methods. We invite the community to explore, benchmark, and build upon our work.
@@ -214,11 +217,11 @@
   <!-- Tab headers -->
   <div class="tabs is-centered is-boxed">
     <ul id="experiment-tabs">
-      <li class="is-active" data-tab="exp1"><a>Dilution Effect</a></li>
-      <li data-tab="exp2"><a>Effect of Injection Timing</a></li>
-      <li data-tab="exp3"><a>Effect of Paraphrasing Injected Data</a></li>
-      <li data-tab="exp4"><a>Evaluating MI Attacks</a></li>
-      <li data-tab="exp5"><a>Evaluating Unlearning Methods</a></li>
+      <li class="is-active" data-tab="exp1"><a>Dilution</a></li>
+      <li data-tab="exp2"><a>Timing Effects</a></li>
+      <li data-tab="exp3"><a>Paraphrased Perturbations</a></li>
+      <li data-tab="exp4"><a>HubbleMIA</a></li>
+      <li data-tab="exp5"><a>HubbleUnlearning</a></li>
     </ul>
   </div>
 
@@ -432,14 +435,14 @@
         <!-- Resource cards -->
         <div class="columns is-multiline is-centered">
           <!-- Hubble Core (added at beginning) -->
-          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+          <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
             <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-core-68db785e0928a04885b0b7f6" target="_blank" rel="noopener noreferrer">
               <div class="card resource-card">
                 <div class="card-content has-text-centered">
                   <span class="icon is-large has-text-success"><i class="fas fa-database fa-2x" aria-hidden="true"></i></span>
                   <p class="title is-5" style="margin-top: 0.5rem;">Hubble Core</p>
                   <p class="is-size-6 has-text-grey">
-                    Core models and datasets.
+                    Core models and pretraining data.
                   </p>
                   <span class="button is-link is-light is-small">View collection</span>
                 </div>
@@ -447,7 +450,7 @@
             </a>
           </div>
           <!-- Interference -->
-          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+          <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
             <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-interference-68db77c4c886a804ae28c1f4" target="_blank" rel="noopener noreferrer">
               <div class="card resource-card">
                 <div class="card-content has-text-centered">
@@ -463,7 +466,7 @@
           </div>
 
           <!-- Timing -->
-          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+          <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
             <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-timing-68db76f43001bfc806172ee5" target="_blank" rel="noopener noreferrer">
               <div class="card resource-card">
                 <div class="card-content has-text-centered">
@@ -479,7 +482,7 @@
           </div>
 
           <!-- Paraphrase -->
-          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+          <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
             <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-paraphrase-68db75ee6359ae9196b6a110" target="_blank" rel="noopener noreferrer">
               <div class="card resource-card">
                 <div class="card-content has-text-centered">
@@ -495,7 +498,7 @@
           </div>
 
           <!-- Architecture -->
-          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+          <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
             <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-architecture-68db747ecccdb8a9f8e53c5d" target="_blank" rel="noopener noreferrer">
               <div class="card resource-card">
                 <div class="card-content has-text-centered">
@@ -511,14 +514,14 @@
           </div>
 
           <!-- Perturbation Data (added at end) -->
-          <div class="column is-full-mobile is-half-tablet is-one-quarter-desktop">
+          <div class="column is-full-mobile is-half-tablet is-one-third-desktop">
             <a class="resource-card-link" href="https://huggingface.co/collections/allegrolab/hubble-datasets" target="_blank" rel="noopener noreferrer">
               <div class="card resource-card">
                 <div class="card-content has-text-centered">
                   <span class="icon is-large has-text-link"><i class="fas fa-sliders-h fa-2x" aria-hidden="true"></i></span>
-                  <p class="title is-5" style="margin-top: 0.5rem;">Perturbation Data</p>
+                  <p class="title is-5" style="margin-top: 0.5rem;">Perturbation Datasets</p>
                   <p class="is-size-6 has-text-grey">
-                    Collections of injected passages across tasks and settings.
+                    Collections of injected texts (perturbations) across tasks and settings.
                   </p>
                   <span class="button is-link is-light is-small">View collection</span>
                 </div>
@@ -556,10 +559,10 @@
   <div class="container">
     <div class="content has-text-centered">
       <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf" target="_blank" rel="noopener noreferrer">
+         href="https://arxiv.org/pdf/2510.19811" target="_blank" rel="noopener noreferrer">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link external-link" href="https://github.com/keunhong" target="_blank" rel="noopener noreferrer" disabled>
+      <a class="icon-link external-link" href="https://github.com/allegro-lab/hubble" target="_blank" rel="noopener noreferrer" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
