@@ -131,6 +131,14 @@ sbatch scripts/submit_eval_job.sh
 
 **Note:** Needs `transformers` versions >= 4.41.0 to correctly set the MLP bias in Llama
 
+### Preparing the Perturbed Dataset
+
+The data for the perturbed runs can be prepared by inserting the [tokenized perturbation examples](https://huggingface.co/datasets/allegrolab/dclm-baseline-500b_toks/tree/main/tokenized) into the [tokenized DCLM corpus](https://huggingface.co/datasets/allegrolab/dclm-baseline-500b_toks/tree/standard). The perturbation process requires the NeoX training script to be run for a few steps so that the files for sampling and shuffling are created (see the `doc_idx.npy`, `sample_idx.npy`, `shuffle_idx.npy` files in the above corpus).
+
+Once these auxilliary files are present, the tokenized perturbation data can be randomly inserted into the corpus. See the sample script [here](./scripts/perturbation_utils/perturb_hubble.sh).
+
+We have released the perturbation utilities as a separate project: [TokenSmith](https://github.com/aflah02/TokenSmith).
+
 ### Training
 
 The Hubble models are trained using [EleutherAI/gpt-neox](https://github.com/EleutherAI/gpt-neox)
